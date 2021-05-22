@@ -3,7 +3,7 @@
 ![APM](https://img.shields.io/apm/l/open)
 
 
-![Screenshot](/Workout Tracker/Workout Tracker.png)
+![Screenshot](Workout Tracker/Workout Tracker.png)
 
 
  # Table of Content: 
