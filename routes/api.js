@@ -1,55 +1,51 @@
 const router = require("express").Router();
-const Transaction = require("../models/workout.js");
+const Workout = require("../models/workout.js");
 
-
-router.get("/api/workout", (req, res) => {
+router.get("/api", (req, res) => {
   Workout.find({})
     .sort({ date: -1 })
-    .then(dbWorkout=> {
+    .then((dbWorkout) => {
       res.json(dbWorkout);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(400).json(err);
     });
 });
 
-router.get("/api/workout", (req, res) => {
+router.get("/api/workouts", (req, res) => {
   Workout.find({})
-    
-    .then(dbWorkout=> {
+
+    .then((dbWorkout) => {
       res.json(dbWorkout);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(400).json(err);
     });
 });
 
-
-
-router.post("/api/workout", ({ body }, res) => {
+router.post("/api/workouts", (req, res) => {
+  console.log(req.body);
   Workout.create({})
-    .then(dbWorkout => {
+    .then((dbWorkout) => {
       res.json(dbWorkout);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(400).json(err);
     });
 });
 
-router.put("/api/workout/:idk", ({ body, params }, res) => {
+router.put("/api/workouts/:id", ({ body, params }, res) => {
   Workout.findByIdAndUpdate(
     params.id,
-    {$push: { exercises: body}},
-    {new: true, runValidators: true}
+    { $push: { exercises: body } },
+    { new: true, runValidators: true }
   )
-    .then(dbWorkout => {
+    .then((dbWorkout) => {
       res.json(dbWorkout);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(400).json(err);
     });
 });
-
-
 
 module.exports = router;
